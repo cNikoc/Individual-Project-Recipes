@@ -3,8 +3,8 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: none;
     border-bottom: 1px solid #111;
-    margin-right: 12px;
-    margin-left: 12px;
+    margin-right: 4px;
+    margin-left: 4px;
     outline: none;
 }
 
@@ -14,26 +14,28 @@
 
 .btnrecipes {
     position: absolute;
-    left: 90px;
-    top: 35px;
+    left: 70px;
+    top: 23px;
     border: 1px solid lightblue;
     padding: 10px;
     font-family: cursive;
     cursor: pointer;
     animation: bounce 0.8s alternate ease infinite;
     box-shadow: 5px 5px 14px 0 #555;
+    z-index: 16;
 }
 
 .btncreate {
     position: absolute;
-    right: 90px;
-    top: 35px;
+    right: 70px;
+    top: 23px;
     border: none;
     padding: 10px;
     font-family: cursive;
     cursor: pointer;
     animation: bounce 0.8s alternate ease infinite;
     box-shadow: 5px 5px 14px 0 #555;
+    z-index: 18;
 }
 
 @keyframes bounce {
@@ -51,4 +53,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-bottom: 20px;
 }

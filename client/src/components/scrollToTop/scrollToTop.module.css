@@ -1,25 +1,27 @@
 .STT_btn {
-    /* position: relative; */
-    background: #00ff40;
+    position: relative;
+    top: -60px;
+    left: 490px; 
+    z-index: 101;
+    background: #daa520;
     color: #fff;
     color: #000;
-    height: 32px;
-    width: 32px;
+    height: 34px;
+    width: 34px;
     margin: 20px;
     margin-bottom: 30px;
-    border: 3px groove #00ff40;
+    border: 3px groove #daa520;
     border-radius: 50%;
     box-shadow: 0 0 10px 0 #333;
     cursor: pointer;
-    /* left: 520px; */
-    animation: bounce 0.3s alternate ease infinite; 
+    animation: bounce 0.2s alternate ease infinite; 
 }
 
 @keyframes bounce {
     from {
-        transform: translateY(5px);
+        transform: translateY(8px);
     }
     to {
-        transform: translateY(-3px);
+        transform: translateY(-4px);
     }
 }

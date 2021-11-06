@@ -2,7 +2,7 @@
     margin: 150px auto 0 auto;
     text-align: center;
     border: 7px solid #9991;
-    border-top-color: #ff5f00ee;
+    border-top-color: #daa520;
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -11,7 +11,7 @@
 
 .spinner_h5 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #111;
+    color: #00000090;
 }
     
 @keyframes girar {

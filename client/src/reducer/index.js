@@ -57,6 +57,30 @@ const reducer = (state = initialState, action) => {
                 recipes: filterO
             };    
 
+        case "FILTER_BY_ORDER_ALPHABETICAL":
+            let filterAlp;
+
+            if (action.payload === "asc") 
+                filterAlp = state.recipesTotal.sort((a,b) => {
+                    if (a.name > b.name) return 1;
+                    else if (a.name < b.name) return -1;
+                    else return 0;
+                })
+
+            else if (action.payload === "desc") 
+                filterAlp = state.recipesTotal.sort((a,b) => {
+                    if (a.name > b.name) return -1;
+                    else if (a.name < b.name) return 1;
+                    else return 0;
+                });
+            
+            else filterAlp = state.recipesTotal;
+            
+            return {
+                ...state,
+                recipes: filterAlp
+            };   
+
         case "FILTER_BY_DIET_TYPES":
             const recipesTotal = state.recipesTotal;
             const dietsApi = [];

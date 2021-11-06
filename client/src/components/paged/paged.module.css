@@ -10,8 +10,8 @@
     border: none;
     border-radius: 50%;
     width: 32px;
-    margin-right: 1px;
-    margin-left: 1px;
+    margin-right: 3px;
+    margin-left: 3px;
     padding: 7px;
     cursor: pointer;
 }

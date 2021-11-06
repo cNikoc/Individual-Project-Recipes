@@ -10,7 +10,8 @@ import notfound from "./notfound.jpg";
 import Loading from '../loading/Loading.jsx';
 import { 
 getAllRecipes, 
-filterByOrder, 
+filterByOrder,
+filterByOrderAlphabetical,  
 filterByDietTypes, 
 filterByCreation } from '../../actions/index';
 
@@ -45,12 +46,21 @@ const Home =()=> {
         setOrder(`ordered ${evt.target.value}`); // setea el estado local order, declarado más arriba y renderice de nuevo.
     };
 
+    const filterOrderAlphabetical = evt => {
+        evt.preventDefault();
+        dispatch(filterByOrderAlphabetical(evt.target.value));
+        setCurrentPage(1);
+        setOrder(`ordered ${evt.target.value}`); // setea el estado local order, declarado más arriba y renderice de nuevo.
+    };
+
     const filterDiets = evt => {
+        evt.preventDefault();
         dispatch(filterByDietTypes(evt.target.value));
         setCurrentPage(1);
     };
 
     const filterCreation = evt => {
+        evt.preventDefault();
         dispatch(filterByCreation(evt.target.value));
         setCurrentPage(1);
     };
@@ -63,16 +73,23 @@ const Home =()=> {
             <SearchBar />
             
             <div>
-                <label className={style.homelabel}>Filter as:</label>
+                <label className={style.homelabel}> Filter:</label>
                 <select onChange={ evt => filterOrder(evt) } className={style.homeselect}>
-                    <option value="-">'SCORE'</option>
+                    <option value="-">'AS SCORE'</option>
                     <option value="asc">ascendient</option>
                     <option value="desc">descendient</option>
                 </select>
+
+                <label className={style.homelabel}> Filter:</label>
+                <select onChange={ evt => filterOrderAlphabetical(evt) } className={style.homeselect}>
+                    <option value="-">'ALPHABETICALLY'</option>
+                    <option value="asc">A-Z</option>
+                    <option value="desc">Z-A</option>
+                </select>
             
-                <label className={style.homelabel}>Filter as:</label>
+                <label className={style.homelabel}> Filter:</label>
                 <select onChange={ evt => filterDiets(evt) } className={style.homeselect}>
-                    <option value="-">'DIET TYPE'</option>
+                    <option value="-">'AS DIET TYPE'</option>
                     <option value="gluten free">gluten free</option>
                     <option value="dairy free">dairy free</option>
                     <option value="lacto ovo vegetarian">lacto ovo vegetarian</option>
@@ -84,9 +101,9 @@ const Home =()=> {
                     <option value="whole 30">whole 30</option>
                 </select>
 
-                <label className={style.homelabel}>Filter as:</label>
+                <label className={style.homelabel}> Filter:</label>
                 <select onChange={ evt => filterCreation(evt) } className={style.homeselect}>
-                    <option value="-">'CREATED BY'</option>
+                    <option value="-">'AS CREATED BY'</option>
                     <option value="created">created</option>
                     <option value="existent">already existent</option>
                 </select>
@@ -97,7 +114,7 @@ const Home =()=> {
             recipesLength = { recipes.length }
             paged = { paged }
             />
-    
+            
             <div className={style.home_cardcontainer}>
                 { currentRecipes.length >= 1
                     ? 
@@ -106,7 +123,7 @@ const Home =()=> {
                         key = { recipe.id }
                         name = { recipe.name } 
                         image = { recipe.image ? recipe.image : notfound } 
-                        dietType = { recipe.diets.length ? recipe.diets.map(d => " • " + d) : "none" }
+                        dietType = { recipe.diets.length ? recipe.diets?.map(d => " • " + d) : "none" }
                         id = { recipe.id }
                         />
                     ))
@@ -114,6 +131,7 @@ const Home =()=> {
                     <h4><Loading /></h4>
                 }
             </div>
+
             <ScrollToTop />
         </div>
     );

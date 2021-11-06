@@ -58,6 +58,13 @@ export const filterByOrder = payload => {
     };
 };
 
+export const filterByOrderAlphabetical = payload => {
+    return {
+        type: "FILTER_BY_ORDER_ALPHABETICAL",
+        payload
+    };
+};
+
 export const filterByDietTypes = payload => {
     return {
         type: "FILTER_BY_DIET_TYPES",

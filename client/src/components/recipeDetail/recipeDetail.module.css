@@ -14,25 +14,16 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
     transform: scale(80%);
-    cursor: none;
 }
 
 .detail_title {
     font-size: 14px;
     text-transform: uppercase;
-    text-decoration: underline;
 }
 
-.detail_score {
+.detail_score, .detail_health, .detail_diets {
     font-size: 12px;
-}
-
-.detail_health {
-    font-size: 12px;
-}
-
-.detail_diets {
-    font-size: 12px;
+    display: inline;
 }
 
 .detail_resume, .detail_sbs {

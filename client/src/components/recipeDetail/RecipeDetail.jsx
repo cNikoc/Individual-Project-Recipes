@@ -21,20 +21,22 @@ const RecipeDetail = props => {
                 <div className={style.detail_container}>
                     
                     <h2 className={style.detail_title}>{recipe[0].name}.</h2>
-                    <h4 className={style.detail_score}> Score: {recipe[0].puntuation} points. </h4>
+                    <hr/>
+                    <h4 className={style.detail_score}> Score: {recipe[0].puntuation} points. </h4> <br/>
                     <h4 className={style.detail_health}> Healthiness: {recipe[0].healthyLevel} points. </h4>
                     {
-                        <div className={style.detail_diets}>
+                        <div>
                             <label>Diet-types:</label>
                             {recipe[0].diets.map(d => (
-                                <span> {d}. </span>
+                                <h4 className={style.detail_diets}> {d}. </h4>
                             ))}
                         </div>
                     }
+                    <hr/>
                     <p className={style.detail_resume}> Summary: {recipe[0].resumePlate.replace(/<[^>]*>?/g, '')}. </p>
                     <img height="300px" alt="imag-det" src={ recipe[0].image ? recipe[0].image : notfound } className={style.detail_img}/>
                     <hr/>
-                    <p className={style.detail_sbs}> Step by step: {recipe[0].stepByStep ? recipe[0].stepByStep : "none"}. </p> 
+                    <p className={style.detail_sbs}> Step by step: {recipe[0].stepByStep ? recipe[0].stepByStep : "We do not have the step by step of this recipe, sorry..."}. </p> 
                 </div>
                 :
                 <div>

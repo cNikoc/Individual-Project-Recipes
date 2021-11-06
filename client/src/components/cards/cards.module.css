@@ -11,12 +11,23 @@
     transition: background-color 1s;
     border: none;
     outline: 3px solid #fff;
+    transform: scale(90%);
 }
 
 .card_card:hover {
-    outline: 5px solid #daa520;
-    background: #00000010;
-    box-shadow: 0 0 10px #333;
+    outline: 4px solid #daa520;
+    background: linear-gradient(43deg, #00000010, #daa52093);
+    box-shadow: 0 0 20px 0 #111;
+    animation: move 3s alternate ease-in-out infinite; 
+}
+
+@keyframes move {
+    from {
+        transform: scale(90%);
+    }
+    to {
+        transform: scale(94%);
+    }
 }
 
 .card_name_i, .card_name {

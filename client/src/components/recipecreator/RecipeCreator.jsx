@@ -102,7 +102,6 @@ const RecipeCreator =()=> {
                     value={input.puntuation} 
                     name="puntuation" 
                     onChange={evt =>{ typing(evt) }}
-                    className={style.RC_range}
                     className={style.creator_range} />
                     <span>{input.puntuation ? input.puntuation : 0} points</span>
                 </div>
@@ -114,8 +113,7 @@ const RecipeCreator =()=> {
                     value={input.healthyLevel} 
                     name="healthyLevel" 
                     onChange={evt =>{ typing(evt) }}
-                    className={style.RC_range}
-                    className={style.creator_range} />
+                    className={style.creator_range2} />
                      <span>{input.healthyLevel ? input.healthyLevel : 0} points</span>
                 </div>
                 <div>
@@ -137,14 +135,14 @@ const RecipeCreator =()=> {
                     className={style.creator_input_i} />
                 </div>
                 <div>
-                    <label>Diet-Type: </label>
+                    <label>Diet-Types: </label>
                     <select name="dietType" onChange={evt =>{ selection(evt) }} className={style.creator_select}>
                         { dietTypes && dietTypes.map(diet => (
                             <option value = { diet.name }>{ diet.name }</option> ))
                         }
                     </select>
                 </div> 
-                <ul className={style.creator_ul}><li>{input.diets && input.diets.map(diet => " - " + diet)}</li></ul>
+                <ul className={style.creator_ul}><li>{input.diets && input.diets.map(diet => `// ${diet} //`)}</li></ul>
                 <div>
                     {<button 
                     type="submit" 

@@ -7,29 +7,30 @@ import style from "./searchBar.module.css";
 const SearchBar =()=> {
 
     const dispatch = useDispatch();
-    const [name, setName] = React.useState(" ");
+    const [search, setSearch] = React.useState("")
 
     const typing = evt => {
         evt.preventDefault();
-        setName(evt.target.value);
+        setSearch(evt.target.value);
     };
 
     const submiting = evt => {
         evt.preventDefault();
-        dispatch(getRecipesByName(name));
-        setName(" ");
+        dispatch(getRecipesByName(search))
+        setSearch(" ");
+        console.log(search)
     };
 
     const enter = evt => {
         if (evt.key === 'Enter') {
           evt.preventDefault();
-          dispatch(getRecipesByName(name));
-          setName(" ");
+          dispatch(getRecipesByName(search));
+          setSearch("");
         };
     };
 
     return (
-        <div>
+        <div className={style.sb_cont}>
             <input 
             type="text" 
             placeholder="Search a recipe..." 
