@@ -6,13 +6,13 @@ const {
     showRecipesById, 
     showDietTypes, 
     postRecipe 
-} = require('../Controllers/controller');
+} = require('../controllers/controller');
 
 const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get("/recipes", showAllRecipes);
-router.get("/recipes/:id", showRecipesById);
+router.get("/recipes", showAllRecipes); // todas y query
+router.get("/recipes/:id", showRecipesById); 
 router.get("/types", showDietTypes);
 router.post("/recipe", postRecipe);
 

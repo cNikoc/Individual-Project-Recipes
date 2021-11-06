@@ -1,0 +1,119 @@
+.creator_link, .creator_link_a {
+    color: #111;
+    position: absolute;
+    left: 70px;
+    top: 10px;
+}
+
+.creator.title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #111;
+   
+}
+
+.creator_container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -79px;
+    left: 230px;
+    margin: auto;
+    padding: 9px;
+    background: #00000014;
+    width: 800px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    transform: scale(76%);
+}
+
+.creator_input, .creator_input_i {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 260px;
+    margin: 10px;
+    padding: 5px;
+    border: none;
+    border-bottom: 3px solid #daa520;
+    outline: none;
+    background: linear-gradient(transparent, #ffffffcb);
+}
+
+.creator_input_i {
+    width: 600px;
+}
+
+.creator_textarea {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 15px;
+    resize: none;
+    border: none;
+    outline: none;
+    margin: 10px;
+    border-bottom: 3px solid #daa520; 
+    width: 330px;
+    height: 100px;
+    background: linear-gradient(transparent, #fff);
+}
+
+.creator_select {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 4px;
+    margin: 5px;
+}
+
+.creator_btn {
+    font-size: 14px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border: none;
+    padding: 14px;
+    width: 120px;
+    background: #e7a700;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 #444;
+}
+
+.creator_btn:hover {
+    background: #daa520;
+}
+
+.creator_btn:active, .creator_btn:focus {
+    box-shadow: 0 0 0 0;
+}
+
+.creator_range {
+    cursor: pointer;
+    width: 330px;
+    margin: 15px;
+}
+
+.creator_err {
+    color: red;
+}
+
+/* .creator_ul {
+    color: #daa520;
+} */
+
+/*
+
+.err {
+    color: red;
+} */
+
+/* .RC_range{
+    height: 20px;
+    background-color: orangered;
+    border: 1px solid black;
+    border-radius: 50px;
+    -webkit-appearance: none;
+}
+.RC_range::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background-color: #ff0000;
+    border-radius: 50%;
+} */

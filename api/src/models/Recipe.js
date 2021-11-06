@@ -5,10 +5,10 @@ module.exports = sequelize => {
   // defino el modelo
   sequelize.define('recipe', {
     id: {
+      primaryKey: true,
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4(),
       allowNull: false,
-      primaryKey: true
     },
     name: {
       type: DataTypes.STRING,

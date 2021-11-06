@@ -1,0 +1,54 @@
+.homeselect {
+    background: transparent;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: none;
+    border-bottom: 1px solid #111;
+    margin-right: 12px;
+    margin-left: 12px;
+    outline: none;
+}
+
+.homelabel {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btnrecipes {
+    position: absolute;
+    left: 90px;
+    top: 35px;
+    border: 1px solid lightblue;
+    padding: 10px;
+    font-family: cursive;
+    cursor: pointer;
+    animation: bounce 0.8s alternate ease infinite;
+    box-shadow: 5px 5px 14px 0 #555;
+}
+
+.btncreate {
+    position: absolute;
+    right: 90px;
+    top: 35px;
+    border: none;
+    padding: 10px;
+    font-family: cursive;
+    cursor: pointer;
+    animation: bounce 0.8s alternate ease infinite;
+    box-shadow: 5px 5px 14px 0 #555;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(5px);
+        background: linear-gradient(50deg, #fff0c0, #ffa500);
+    }
+    100% {
+        transform: translateY(-3px);
+        background: linear-gradient(0deg, #fff0c0, #ffa500);
+    }
+}
+
+.home_cardcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

@@ -1,0 +1,21 @@
+.spinner {
+    margin: 150px auto 0 auto;
+    text-align: center;
+    border: 7px solid #9991;
+    border-top-color: #ff5f00ee;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    animation: girar 0.4s linear infinite;
+}
+
+.spinner_h5 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #111;
+}
+    
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+
+    100% { transform: rotate(360deg); }
+}

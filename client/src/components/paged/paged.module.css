@@ -1,0 +1,31 @@
+.paged_cont {
+    position: relative;
+    right: 20px;
+}
+
+.boton_paged {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #00000076;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    margin-right: 1px;
+    margin-left: 1px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.boton_paged:hover {
+    outline: 2px solid #daa520;
+    background-color: #ffffff;
+    color: #000;
+    box-shadow: 0 0 10px 0 #00000090;
+}
+
+.boton_paged:focus, .boton_paged:active {
+    outline: 2px solid #daa520;
+    background-color: #e7bf59dc;
+    color: #000;
+    box-shadow: 0 0 10px 0 #00000090;
+}

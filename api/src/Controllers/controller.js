@@ -17,7 +17,8 @@ const getApiInfo = async () => {
             .map(r => r.steps.map(s => s.step))
             .flat(1)
             .join(""),
-            image: obj.image
+            image: obj.image,
+            diets: obj.diets.map(diet => diet)
         };
     });
     return apiInfo;
@@ -69,33 +70,28 @@ const showRecipesById = async (req,res) => {
     }
 };
 
-const diets = [
-{name: "gluten free"},
-{name: "dairy free"},
-{name: "lacto ovo vegetarian"},
-{name: "vegan"},
-{name: "paleolithic"},
-{name: "primal"},
-{name: "pescatarian"},
-{name: "fodmap friendly"},
-{name: "whole 30"}
-];
-
 const showDietTypes = async (req,res) => {
 
-    try {
-        const response = await DietTypes.findAll();
+    const response = await axios(`https://api.spoonacular.com/recipes/complexSearch/?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
 
-        if (response.length > 0) return res.status(200).json(response);
-        else try {
-            const dietDb = await DietTypes.bulkCreate(diets)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    catch (err) {
-        console.log(err)
-    }
+    const diet = response.data.results.map(e => e.diets);
+    const diet2 = []
+    diet.map(d2 => {
+        for (var i = 0; i < d2.length; i++) {
+            diet2.push(d2[i]);
+        };
+    });
+
+    diet2.forEach(element => {
+        if (element) {
+            DietTypes.findOrCreate({
+                where: { name: element }
+            });
+        };
+    });
+
+    const allDiet = await DietTypes.findAll();
+    res.json(allDiet);
 };
 
 const postRecipe = async (req,res) => {
@@ -103,25 +99,26 @@ const postRecipe = async (req,res) => {
     try {
         let dietType = req.body.dietType;
 
-    const newRecipe = await Recipe.create({
-        name: req.body.name, 
-        resumePlate: req.body.resumePlate, 
-        puntuation: req.body.puntuation, 
-        healthyLevel: req.body.healthyLevel, 
-        stepByStep: req.body.stepByStep, 
-        image: req.body.image,
-        createdInDB: req.body.createdInDB,
-    })
+        const newRecipe = await Recipe.create({
+            name: req.body.name, 
+            resumePlate: req.body.resumePlate, 
+            puntuation: req.body.puntuation, 
+            healthyLevel: req.body.healthyLevel, 
+            stepByStep: req.body.stepByStep, 
+            image: req.body.image,
+            createdInDB: req.body.createdInDB,
+        });
 
-    const dietTypeDB = await DietTypes.findAll({
-        where: {name : dietType}
-    });
+        const dietTypeDB = await DietTypes.findAll({
+            where: {name : dietType}
+        });
 
-    newRecipe.addDietTypes(dietTypeDB) // ?? DietType ?? plural singular DietTypess
-    res.status(200).json({message: "Recipe created succesfully!"});
+        newRecipe.addDietTypes(dietTypeDB) // 'add+Modelo' es una funcion que me da Sequelize.
+        res.status(200).json({message: "Recipe created succesfully!"});
     }
-    catch(err) {
-        console.log(err)
+    catch(err) { 
+        console.log(err);
+        res.status(404).json({message: "the data is not enough, -neededs: name*,resumePlate*,puntuation,healthyLevel,stepByStep,dietType* and image."});
     }
 };
 

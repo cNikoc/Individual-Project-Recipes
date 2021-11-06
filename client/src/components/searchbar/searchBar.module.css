@@ -1,0 +1,27 @@
+.input {
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000;
+    background: transparent;
+    border: none;
+    margin: 20px auto;
+    padding: 5px;
+    width: 250px;
+    border-bottom: 3px solid #e7a700;
+    outline: none;
+}
+
+.input::placeholder {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333;
+}
+
+.btn {
+    border: none;
+    padding: 5px;
+    background: transparent;
+    border-bottom: 3px solid #daa520;
+    cursor: pointer;
+    outline: none;
+    color: #000;
+}
