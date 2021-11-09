@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Cards from '../cards/Cards';
 import Paged from '../paged/Paged';
-import ScrollToTop from '../scrollToTop/ScrollToTop.jsx';
 import SearchBar from '../searchbar/SearchBar.jsx';
-import style from "./home.module.css";
-import notfound from "./notfound.jpg";
 import Loading from '../loading/Loading.jsx';
 import { 
 getAllRecipes, 
@@ -14,6 +11,7 @@ filterByOrder,
 filterByOrderAlphabetical,  
 filterByDietTypes, 
 filterByCreation } from '../../actions/index';
+import style from "./home.module.css";
 
 const Home =()=> {
 
@@ -115,15 +113,15 @@ const Home =()=> {
             paged = { paged }
             />
             
-            <div className={style.home_cardcontainer}>
+            <div className={style.home_cardflexcontainer}>
                 { currentRecipes.length >= 1
                     ? 
                     currentRecipes.map(recipe => (
                         <Cards
                         key = { recipe.id }
                         name = { recipe.name } 
-                        image = { recipe.image ? recipe.image : notfound } 
-                        dietType = { recipe.diets.length ? recipe.diets?.map(d => " • " + d) : "none" }
+                        image = { recipe.image } 
+                        dietType = { recipe.diets ? recipe.diets : recipe.dietTypes && recipe.dietTypes.map((e) => e.name)}
                         id = { recipe.id }
                         />
                     ))
@@ -131,8 +129,6 @@ const Home =()=> {
                     <h4><Loading /></h4>
                 }
             </div>
-
-            <ScrollToTop />
         </div>
     );
 }; 

@@ -26,7 +26,7 @@
         transform: scale(90%);
     }
     to {
-        transform: scale(94%);
+        transform: scale(94%) rotate(6deg);
     }
 }
 
@@ -55,3 +55,14 @@
     font-size: 9px;
     font-style: italic;
 }
+
+/* .btn_delete {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 18.6em;
+    position: absolute;
+    bottom: -.7em;
+    transform: scale(130%);
+} */

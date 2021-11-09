@@ -24,19 +24,24 @@ const RecipeDetail = props => {
                     <hr/>
                     <h4 className={style.detail_score}> Score: {recipe[0].puntuation} points. </h4> <br/>
                     <h4 className={style.detail_health}> Healthiness: {recipe[0].healthyLevel} points. </h4>
+                    <hr/>
                     {
                         <div>
                             <label>Diet-types:</label>
-                            {recipe[0].diets.map(d => (
-                                <h4 className={style.detail_diets}> {d}. </h4>
-                            ))}
+                            { 
+                                !recipe[0].createdInDB ? 
+                                recipe[0].diets?.map((diet) => diet) :
+                                recipe[0].dietTypes.length ?  
+                                recipe[0].dietTypes?.map((diet) => ` ${diet.name}. `)
+                                : " No diet-type specified for this recipe, sorry..."
+                            }
                         </div>
                     }
                     <hr/>
                     <p className={style.detail_resume}> Summary: {recipe[0].resumePlate.replace(/<[^>]*>?/g, '')}. </p>
                     <img height="300px" alt="imag-det" src={ recipe[0].image ? recipe[0].image : notfound } className={style.detail_img}/>
                     <hr/>
-                    <p className={style.detail_sbs}> Step by step: {recipe[0].stepByStep ? recipe[0].stepByStep : "We do not have the step by step of this recipe, sorry..."}. </p> 
+                    <p className={style.detail_sbs}> Step by step: {recipe[0].stepByStep ? recipe[0].stepByStep : " No step-by-step specified for this recipe, sorry..."}. </p> 
                 </div>
                 :
                 <div>

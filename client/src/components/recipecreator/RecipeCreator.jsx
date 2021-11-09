@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { postRecipe, getDietTypes } from '../../actions/index';
 import { useDispatch, useSelector } from 'react-redux';
+import { GoCheck } from "react-icons/go";
 import style from "./recipeCreator.module.css";
 
 const inputValidate = input => {
@@ -22,7 +23,7 @@ const RecipeCreator =()=> {
     React.useEffect(()=>{ dispatch(getDietTypes()) }, [dispatch]);
 
     const [errors, setErrors] = React.useState({});
-    const [habilitado, setHabilitado] = React.useState(false);
+    // const [habilitado, setHabilitado] = React.useState(false);
 
     const [input, setInput] = React.useState({
         name: "", 
@@ -44,7 +45,7 @@ const RecipeCreator =()=> {
             ...input,
             [ evt.target.name ] : evt.target.value
         }))
-        Object.keys(errors) ? setHabilitado(true) : setHabilitado(false)
+        // Object.keys(errors).length >= 1 ? setHabilitado(true) : setHabilitado(false)
     };
 
     const submiting = evt => {
@@ -95,7 +96,7 @@ const RecipeCreator =()=> {
                      { errors.resumePlate && ( <div className={style.creator_err} >{errors.resumePlate}</div> ) }
                 </div>
                 <div>
-                    <label>Score 1/100: </label>
+                    <label>Score 0/100: </label>
                     <input 
                     type="range" 
                     min="1" max="100" 
@@ -106,7 +107,7 @@ const RecipeCreator =()=> {
                     <span>{input.puntuation ? input.puntuation : 0} points</span>
                 </div>
                 <div>
-                    <label>Healthiness 1/100: </label>
+                    <label>Healthiness 0/100: </label>
                     <input 
                     type="range" 
                     min="1" max="100" 
@@ -148,7 +149,8 @@ const RecipeCreator =()=> {
                     type="submit" 
                     // disabled={!habilitado} 
                     onClick={evt => submiting(evt)} 
-                    className={style.creator_btn}>Create!</button>}
+                    className={style.creator_btn}
+                    >CREATE <GoCheck/></button>}
                 </div>
             </form>
         </div>

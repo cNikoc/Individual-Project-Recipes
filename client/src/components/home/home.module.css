@@ -29,7 +29,7 @@
     position: absolute;
     right: 70px;
     top: 23px;
-    border: none;
+    border: 1px solid lightblue;
     padding: 10px;
     font-family: cursive;
     cursor: pointer;
@@ -49,7 +49,7 @@
     }
 }
 
-.home_cardcontainer {
+.home_cardflexcontainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

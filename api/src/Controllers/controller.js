@@ -1,6 +1,8 @@
 const axios = require('axios').default;
 const { Recipe, DietTypes } = require('../db');
 const { API_KEY } = process.env;
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 const getApiInfo = async () => {
 
@@ -27,7 +29,7 @@ const getApiInfo = async () => {
 const getDbInfo = async () => {
 
     return await Recipe.findAll({
-        includes: {
+        include: {
             model: DietTypes,
             attributes: ['name'],
             through: {
@@ -36,6 +38,20 @@ const getDbInfo = async () => {
         }
     });
 };
+
+// const removeDbInfo = async () => {
+
+//     return await Recipe.destroy({
+//         includes: {
+//             model: DietTypes,
+//             attributes: ['id'],
+//             through: {
+//                 attributes: []
+//             }
+//         }
+//     });
+// };
+
 
 const getAllRecipes = async () => {
 
@@ -70,6 +86,18 @@ const showRecipesById = async (req,res) => {
     }
 };
 
+// const removeRecipesById = async (req,res) => {
+
+//     const id = req.params.id.trim();
+//     const allRecipes = await removeDbInfo();
+
+//     if (id) {
+//         let recipeId = await allRecipes.filter(recipe => recipe.id.toString() === id.toString());
+//             if (recipeId.length > 0) res.status(200).send(recipeId)
+//             else res.status(404).json({message: "No recipes with that ID."})
+//     }
+// };
+
 const showDietTypes = async (req,res) => {
 
     const response = await axios(`https://api.spoonacular.com/recipes/complexSearch/?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
@@ -97,7 +125,7 @@ const showDietTypes = async (req,res) => {
 const postRecipe = async (req,res) => {
 
     try {
-        let dietType = req.body.dietType;
+        let diets = req.body.diets;
 
         const newRecipe = await Recipe.create({
             name: req.body.name, 
@@ -109,16 +137,21 @@ const postRecipe = async (req,res) => {
             createdInDB: req.body.createdInDB,
         });
 
-        const dietTypeDB = await DietTypes.findAll({
-            where: {name : dietType}
+        let dietTypeDB = await DietTypes.findAll({
+            where: {
+                name: {
+                    [Op.in] : diets
+                }
+            }
         });
+        // newRecipe.addDietTypes(dietTypeDB) // 'add+Modelo' es una funcion que me da Sequelize.
+        dietTypeDB.map(d => newRecipe.addDietTypes(d));
 
-        newRecipe.addDietTypes(dietTypeDB) // 'add+Modelo' es una funcion que me da Sequelize.
         res.status(200).json({message: "Recipe created succesfully!"});
     }
     catch(err) { 
         console.log(err);
-        res.status(404).json({message: "the data is not enough, -neededs: name*,resumePlate*,puntuation,healthyLevel,stepByStep,dietType* and image."});
+        res.status(404).json({message: "the data is not enough, -neededs: name*, resumePlate*, puntuation, healthyLevel, stepByStep, diets* and image."});
     }
 };
 
@@ -126,5 +159,6 @@ module.exports = {
     showAllRecipes, 
     showRecipesById, 
     showDietTypes, 
-    postRecipe
+    postRecipe,
+    // removeRecipesById
 };

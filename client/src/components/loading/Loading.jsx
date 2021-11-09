@@ -5,7 +5,7 @@ const Loading =()=> {
     return (
         <div>
             <div className={style.spinner}>
-                <h4>🥄</h4>
+                <h4><span role="img" aria-label="spoon-cuchara">🥄</span></h4>
             </div>
             <h5 className={style.spinner_h5}>Loading...</h5>
         </div>

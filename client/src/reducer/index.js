@@ -61,16 +61,16 @@ const reducer = (state = initialState, action) => {
             let filterAlp;
 
             if (action.payload === "asc") 
-                filterAlp = state.recipesTotal.sort((a,b) => {
-                    if (a.name > b.name) return 1;
-                    else if (a.name < b.name) return -1;
+                filterAlp = state.recipes.sort((a,b) => {
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                    else if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                     else return 0;
                 })
 
             else if (action.payload === "desc") 
-                filterAlp = state.recipesTotal.sort((a,b) => {
-                    if (a.name > b.name) return -1;
-                    else if (a.name < b.name) return 1;
+                filterAlp = state.recipes.sort((a,b) => {
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+                    else if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
                     else return 0;
                 });
             
@@ -124,6 +124,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state
             }; 
+
+        // case "REMOVE_RECIPE": 
+        //     return {
+        //         ...state,
+        //         recipes: state.recipes.filter(r => r.id !== action.payload),
+        //         totalRecipes: state.recipes.filter(r => r.id !== action.payload),
+        //     };  
 
         default: return state;
     };

@@ -8,12 +8,12 @@
 .detail_container {
     clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
     background: #9995;
-    position: relative;
+    position:static;
     top: -20px;
     overflow: hidden;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
-    transform: scale(80%);
+    transform: scale(84%);
 }
 
 .detail_title {

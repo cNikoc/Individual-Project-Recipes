@@ -4,11 +4,11 @@
 }
 
 .boton_paged {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+    font-family: cursive;
     background-color: #00000076;
     color: #fff;
     border: none;
-    border-radius: 50%;
     width: 32px;
     margin-right: 3px;
     margin-left: 3px;
@@ -17,8 +17,7 @@
 }
 
 .boton_paged:hover {
-    outline: 2px solid #daa520;
-    background-color: #ffffff;
+    background-color: #f5f3f3;
     color: #000;
     box-shadow: 0 0 10px 0 #00000090;
 }

@@ -86,3 +86,10 @@ export const postRecipe = payload => {
     };
 };
 
+// export function removeRecipe(id) {
+//     return { 
+//         type: "REMOVE_RECIPE", 
+//         payload: id
+//     };
+// };
+
