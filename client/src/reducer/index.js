@@ -85,15 +85,15 @@ const reducer = (state = initialState, action) => {
             const recipesTotal = state.recipesTotal;
             const dietsApi = [];
             const dietsDB = [];
-            console.log(recipesTotal)
+            
             recipesTotal.forEach(diet => {
-                if (diet.hasOwnProperty("diets") && diet.diets.includes(action.payload)) {dietsApi.push(diet)}
-            })
+                if (diet.hasOwnProperty("diets") && diet.diets.includes(action.payload)) dietsApi.push(diet)
+            });
 
             recipesTotal.forEach(diet => {
-                if (diet.hasOwnProperty("diets") && diet.diets.find(diet => diet.name === action.payload)) {dietsDB.push(diet)}
-            })
-            console.log(dietsApi, dietsDB)
+                if (diet.hasOwnProperty("diets") && diet.diets.find(diet => diet.name === action.payload)) dietsDB.push(diet)
+            });
+            
             const response = dietsApi.concat(dietsDB);
 
             if (response.length) {
@@ -101,7 +101,7 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     recipes: response
                 };
-            }
+            };
             break; 
 
         case "FILTER_BY_CREATION":

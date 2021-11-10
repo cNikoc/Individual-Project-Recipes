@@ -20,9 +20,9 @@
     top: 45%;
     left: 46.2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #fff;
-    width: 100px;
-    height: 30px;
+    color: #cfcbcb;
+    width: 132px;
+    height: 32px;
     border: none;
     cursor: pointer;
     background-color: #ff910059;
@@ -31,4 +31,8 @@
 
 .LP_btn:hover {
     background-color: #ff4800b6;
+}
+
+.LP_app {
+    color: #768302;
 }

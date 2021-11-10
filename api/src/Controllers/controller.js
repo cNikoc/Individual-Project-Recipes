@@ -1,8 +1,8 @@
 const axios = require('axios').default;
 const { Recipe, DietTypes } = require('../db');
-const { API_KEY } = process.env;
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const { API_KEY } = process.env;
 
 const getApiInfo = async () => {
 
@@ -42,7 +42,7 @@ const getDbInfo = async () => {
 // const removeDbInfo = async () => {
 
 //     return await Recipe.destroy({
-//         includes: {
+//         include: {
 //             model: DietTypes,
 //             attributes: ['id'],
 //             through: {
@@ -51,7 +51,6 @@ const getDbInfo = async () => {
 //         }
 //     });
 // };
-
 
 const getAllRecipes = async () => {
 
@@ -83,7 +82,7 @@ const showRecipesById = async (req,res) => {
         let recipeId = await allRecipes.filter(recipe => recipe.id.toString() === id.toString());
             if (recipeId.length > 0) res.status(200).send(recipeId)
             else res.status(404).json({message: "No recipes with that ID."})
-    }
+    };
 };
 
 // const removeRecipesById = async (req,res) => {
@@ -102,15 +101,17 @@ const showDietTypes = async (req,res) => {
 
     const response = await axios(`https://api.spoonacular.com/recipes/complexSearch/?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
 
-    const diet = response.data.results.map(e => e.diets);
-    const diet2 = []
+    const diet = response.data.results.map(res => res.diets);
+
+    const dietTwo = [];
+
     diet.map(d2 => {
-        for (var i = 0; i < d2.length; i++) {
-            diet2.push(d2[i]);
+        for (let i = 0; i < d2.length; i++) {
+            dietTwo.push(d2[i]);
         };
     });
 
-    diet2.forEach(element => {
+    dietTwo.forEach(element => {
         if (element) {
             DietTypes.findOrCreate({
                 where: { name: element }
@@ -144,15 +145,15 @@ const postRecipe = async (req,res) => {
                 }
             }
         });
-        // newRecipe.addDietTypes(dietTypeDB) // 'add+Modelo' es una funcion que me da Sequelize.
-        dietTypeDB.map(d => newRecipe.addDietTypes(d));
+   
+        dietTypeDB.map(d => newRecipe.addDietTypes(d)); // 'add+Modelo' es una funcion que me da Sequelize.
 
         res.status(200).json({message: "Recipe created succesfully!"});
     }
     catch(err) { 
         console.log(err);
-        res.status(404).json({message: "the data is not enough, -neededs: name*, resumePlate*, puntuation, healthyLevel, stepByStep, diets* and image."});
-    }
+        res.status(404).json({message: "the data is not enough, -neededs: name*, resumePlate*, diets*, puntuation, healthyLevel, stepByStep and image."});
+    };
 };
 
 module.exports = { 

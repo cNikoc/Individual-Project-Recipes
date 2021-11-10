@@ -28,12 +28,20 @@ const RecipeDetail = props => {
                     {
                         <div>
                             <label>Diet-types:</label>
-                            { 
-                                !recipe[0].createdInDB ? 
-                                recipe[0].diets?.map((diet) => diet) :
-                                recipe[0].dietTypes.length ?  
-                                recipe[0].dietTypes?.map((diet) => ` ${diet.name}. `)
-                                : " No diet-type specified for this recipe, sorry..."
+                            {
+                                recipe[0].diets && recipe[0].diets.length 
+                                ? 
+                                recipe[0].diets.map(diet => ` ${diet}. `) 
+                                : 
+                                recipe[0].diets 
+                                ? 
+                                " No diet-type specified for this recipe, sorry..." 
+                                :
+                                recipe[0].dietTypes && recipe[0].dietTypes.length 
+                                ? 
+                                recipe[0].dietTypes.map(diet => ` ${diet.name}. `) 
+                                :
+                                " No diet-type specified for this recipe, sorry..."
                             }
                         </div>
                     }

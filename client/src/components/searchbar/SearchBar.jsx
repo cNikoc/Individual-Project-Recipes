@@ -17,7 +17,7 @@ const SearchBar =()=> {
     const submiting = evt => {
         evt.preventDefault();
         dispatch(getRecipesByName(search))
-        setSearch(" ");
+        setSearch("");
         console.log(search)
     };
 

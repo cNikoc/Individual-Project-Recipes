@@ -6,7 +6,7 @@ import RecipeCreator from "../src/components/recipecreator/RecipeCreator";
 import RecipeDetail from "../src/components/recipeDetail/RecipeDetail";
 import './App.css';
 
-function App() {
+const App =()=> {
   return (
     <BrowserRouter>
      <div className="App">

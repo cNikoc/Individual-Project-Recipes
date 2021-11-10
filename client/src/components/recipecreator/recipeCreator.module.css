@@ -100,23 +100,3 @@
     margin-left: 40px; 
     margin-right: 40px;       
 }
-
-/*
-
-.err {
-    color: red;
-} */
-
-/* .RC_range{
-    height: 20px;
-    background-color: orangered;
-    border: 1px solid black;
-    border-radius: 50px;
-    -webkit-appearance: none;
-}
-.RC_range::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background-color: #ff0000;
-    border-radius: 50%;
-} */

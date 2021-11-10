@@ -21,7 +21,7 @@ const Paged = ({recipesPerPage, recipesLength, paged}) => {
                 }
             </ul>
         </nav>
-    )
+    );
 };
 
 export default Paged;

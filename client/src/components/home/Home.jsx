@@ -24,15 +24,16 @@ const Home =()=> {
     const firstIndexRecipe = lastIndexRecipe - recipesPerPage;
     const currentRecipes = recipes.slice(firstIndexRecipe, lastIndexRecipe);
     // eslint-disable-next-line
-    const [order, setOrder] = React.useState('');  // desabilité ésta linea porque no uso 'order', solo necesito la funcion seteadora y me estaba tirando un warning molesto en la consola.
+    const [order, setOrder] = React.useState('');  
+    // desabilité ésta linea porque no uso 'order', solo necesito la funcion seteadora y me estaba tirando un warning molesto en la consola.
 
     const paged = pageNumber => {
         setCurrentPage(pageNumber);
     };
 
-    React.useEffect(() => { dispatch(getAllRecipes()) }, [dispatch]); // le aclaro que quiero que se vuelva a renderizar cada vez que se haga dispatch
+    React.useEffect(() => { dispatch(getAllRecipes()) }, [dispatch]); 
 
-    const handleClick = evt => {
+    const bringRecipes = evt => {
         evt.preventDefault();
         dispatch(getAllRecipes());
     };
@@ -65,7 +66,7 @@ const Home =()=> {
 
     return (
         <div>
-            <button onClick={evt => handleClick(evt) } className={style.btnrecipes}>Bring all recipes</button>
+            <button onClick={evt => bringRecipes(evt) } className={style.btnrecipes}>Bring all recipes</button>
             <NavLink to="/recipe"><button className={style.btncreate}>Create my own recipe!</button></NavLink>
 
             <SearchBar />
