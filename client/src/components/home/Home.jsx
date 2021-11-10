@@ -23,13 +23,14 @@ const Home =()=> {
     const lastIndexRecipe = currentPage * recipesPerPage;
     const firstIndexRecipe = lastIndexRecipe - recipesPerPage;
     const currentRecipes = recipes.slice(firstIndexRecipe, lastIndexRecipe);
-    // eslint-disable-next-line
-    const [order, setOrder] = React.useState('');  
-    // desabilité ésta linea porque no uso 'order', solo necesito la funcion seteadora y me estaba tirando un warning molesto en la consola.
 
     const paged = pageNumber => {
         setCurrentPage(pageNumber);
     };
+
+    // eslint-disable-next-line
+    const [order, setOrder] = React.useState('');  
+    // desabilité ésta linea porque no uso 'order', solo necesito la funcion seteadora y me estaba tirando un warning molesto en la consola.
 
     React.useEffect(() => { dispatch(getAllRecipes()) }, [dispatch]); 
 
@@ -72,14 +73,14 @@ const Home =()=> {
             <SearchBar />
             
             <div>
-                <label className={style.homelabel}> Filter:</label>
+                <label className={style.homelabel}> Order:</label>
                 <select onChange={ evt => filterOrder(evt) } className={style.homeselect}>
-                    <option value="-">'AS SCORE'</option>
+                    <option value="-">'BY SCORE'</option>
                     <option value="asc">ascendient</option>
                     <option value="desc">descendient</option>
                 </select>
 
-                <label className={style.homelabel}> Filter:</label>
+                <label className={style.homelabel}> Order:</label>
                 <select onChange={ evt => filterOrderAlphabetical(evt) } className={style.homeselect}>
                     <option value="-">'ALPHABETICALLY'</option>
                     <option value="asc">A-Z</option>

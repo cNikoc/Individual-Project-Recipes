@@ -23,13 +23,27 @@ const Cards =({name, image, dietType, id})=> {
                     className={style.card_img}/></NavLink>
 
                 <h5 className={style.card_dt}>Diet-types:</h5>
-                <h6 className={style.card_dts}>{ dietType.length ? `  • ${dietType}  ` : "• No diet-type specified for this recipe, sorry..."}</h6>
+                <h6 className={style.card_dts}>
+                    { dietType.length ? `  • ${dietType}  ` : "• No diet-type specified for this recipe, sorry..." }</h6>
             </div>
         </div>
     );
 };
 
 export default Cards;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import React from 'react';
 // import { NavLink } from 'react-router-dom';

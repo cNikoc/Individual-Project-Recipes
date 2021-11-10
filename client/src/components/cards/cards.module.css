@@ -11,7 +11,7 @@
     transition: background-color 1s;
     border: none;
     outline: 3px solid #fff;
-    transform: scale(90%);
+    transform: scale(90%) rotate(4deg);
 }
 
 .card_card:hover {
@@ -23,10 +23,10 @@
 
 @keyframes move {
     from {
-        transform: scale(90%);
+        transform: scale(90%) rotate(4deg);
     }
     to {
-        transform: scale(94%) rotate(6deg);
+        transform: scale(99%) rotate(0deg);
     }
 }
 

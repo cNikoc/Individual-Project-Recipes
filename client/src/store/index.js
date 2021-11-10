@@ -5,5 +5,5 @@ import reducer from "../reducer/index";
 
 export const store = createStore(
     reducer, 
-    composeWithDevTools(applyMiddleware(thunk)
-));
+    composeWithDevTools(applyMiddleware(thunk))
+);

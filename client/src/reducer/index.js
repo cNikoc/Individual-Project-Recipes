@@ -37,20 +37,20 @@ const reducer = (state = initialState, action) => {
             let filterO;
 
             if (action.payload === "asc") 
-                filterO = state.recipesTotal.sort((a,b) => {
+                filterO = state.recipes.sort((a,b) => {
                     if (a.puntuation > b.puntuation) return 1;
                     else if (a.puntuation < b.puntuation) return -1;
                     else return 0;
                 })
 
             else if (action.payload === "desc") 
-                filterO = state.recipesTotal.sort((a,b) => {
+                filterO = state.recipes.sort((a,b) => {
                     if (a.puntuation > b.puntuation) return -1;
                     else if (a.puntuation < b.puntuation) return 1;
                     else return 0;
                 });
             
-            else filterO = state.recipesTotal;
+            else filterO = state.recipes;
             
             return {
                 ...state,
@@ -74,7 +74,7 @@ const reducer = (state = initialState, action) => {
                     else return 0;
                 });
             
-            else filterAlp = state.recipesTotal;
+            else filterAlp = state.recipes;
             
             return {
                 ...state,

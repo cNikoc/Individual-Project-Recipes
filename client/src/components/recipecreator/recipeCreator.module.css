@@ -48,7 +48,7 @@
     outline: none;
     margin: 10px;
     border-bottom: 2px solid #daa520; 
-    width: 330px;
+    width: 360px;
     height: 100px;
     background: linear-gradient(transparent, #fff 160%);
 }
@@ -82,6 +82,12 @@
 .creator_btn:active, .creator_btn:focus {
     box-shadow: 0 0 0 0;
     box-shadow: inset 0 0 10px 0 #444;
+}
+
+.creator_btn:disabled {
+    background-color: #ff000060;
+    color: #72070760;
+    cursor: not-allowed;
 }
 
 .creator_range, .creator_range2 {

@@ -5,15 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GoCheck } from "react-icons/go";
 import style from "./recipeCreator.module.css";
 
-const inputValidate = input => {
-    const errors = {};
-
-    if (!input.name) errors.name = "Recipe's name is required!";
-    if (!input.resumePlate) errors.resumePlate = "Recipe's summary is required!";
-
-    return errors;
-};
-
 const RecipeCreator =()=> {
 
     const dispatch = useDispatch();
@@ -23,7 +14,23 @@ const RecipeCreator =()=> {
     React.useEffect(()=>{ dispatch(getDietTypes()) }, [dispatch]);
 
     const [errors, setErrors] = React.useState({});
-    // const [habilitado, setHabilitado] = React.useState(false);
+    const [habilitado, setHabilitado] = React.useState(false);
+
+    const inputValidate = input => {
+        const errors = {};
+    
+        if (!input.name) {
+            errors.name = "Recipe's name is required!";
+            setHabilitado(false)
+        }
+        if (!input.resumePlate) {
+            errors.resumePlate = "Recipe's summary is required!";
+            setHabilitado(false)
+        }
+        else setHabilitado(true);
+    
+        return errors;
+    };
 
     const [input, setInput] = React.useState({
         name: "", 
@@ -45,7 +52,6 @@ const RecipeCreator =()=> {
             ...input,
             [ evt.target.name ] : evt.target.value
         }))
-        // Object.keys(errors).length >= 1 ? setHabilitado(true) : setHabilitado(false)
     };
 
     const submiting = evt => {
@@ -147,7 +153,7 @@ const RecipeCreator =()=> {
                 <div>
                     {<button 
                     type="submit" 
-                    // disabled={!habilitado} 
+                    disabled={!habilitado} 
                     onClick={evt => submiting(evt)} 
                     className={style.creator_btn}
                     >CREATE <GoCheck/></button>}
