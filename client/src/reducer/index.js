@@ -1,5 +1,6 @@
 const initialState = {
     recipes: [],
+    filter: [],
     recipesTotal: [],
     dietTypes: [],
     detail: []
@@ -15,17 +16,17 @@ const reducer = (state = initialState, action) => {
                 recipesTotal: action.payload
             }; 
 
+        case "GET_RECIPES_BY_NAME": 
+            return {
+                ...state,
+                recipes: action.payload
+            };       
+
         case "GET_DIET_TYPES":
             return {
                 ...state,
                 dietTypes: action.payload
             };
-
-        case "GET_RECIPES_BY_NAME": 
-            return {
-                ...state,
-                recipes: action.payload
-            };    
 
         case "GET_RECIPE_DETAIL": 
             return {
@@ -82,16 +83,16 @@ const reducer = (state = initialState, action) => {
             };   
 
         case "FILTER_BY_DIET_TYPES":
-            const recipesTotal = state.recipesTotal;
+            const recipes = state.recipes;
             const dietsApi = [];
             const dietsDB = [];
             
-            recipesTotal.forEach(diet => {
+            recipes.forEach(diet => {
                 if (diet.hasOwnProperty("diets") && diet.diets.includes(action.payload)) dietsApi.push(diet)
             });
 
-            recipesTotal.forEach(diet => {
-                if (diet.hasOwnProperty("diets") && diet.diets.find(diet => diet.name === action.payload)) dietsDB.push(diet)
+            recipes.forEach(diet => {
+                if (diet.hasOwnProperty("dietTypes") && diet.dietTypes.find(d => d.name === action.payload)) dietsDB.push(diet)
             });
             
             const response = dietsApi.concat(dietsDB);
@@ -101,19 +102,19 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     recipes: response
                 };
-            };
-            break; 
+            }
+            else alert('Any recipe has that diet-type...'); break; 
 
         case "FILTER_BY_CREATION":
             let filterC;
 
             if (action.payload === "existent") 
-                filterC = state.recipesTotal.filter(rcp => !rcp.createdInDB);
+                filterC = state.recipes.filter(rcp => !rcp.createdInDB);
 
             else if (action.payload === "created") 
-                filterC = state.recipesTotal.filter(rcp => rcp.createdInDB);
+                filterC = state.recipes.filter(rcp => rcp.createdInDB);
 
-            else filterC = state.recipesTotal;
+            else filterC = state.recipes;
 
             return {
                 ...state,
@@ -124,13 +125,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state
             }; 
-
-        // case "REMOVE_RECIPE": 
-        //     return {
-        //         ...state,
-        //         recipes: state.recipes.filter(r => r.id !== action.payload),
-        //         totalRecipes: state.recipes.filter(r => r.id !== action.payload),
-        //     };  
 
         default: return state;
     };
