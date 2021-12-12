@@ -175,4 +175,4 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 
 <h1>RESULTADO FINAL / FINAL RESULT</h1>
 
-<img src="https://raw.githubusercontent.com/cNikoc/PopKorn/main/popkorn.png"></img>
+<img src="https://raw.githubusercontent.com/cNikoc/Individual-Project-Recipes/master/git.png"></img>
